@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
 import MessageBubble from "./MessageBubble";
 import QuickActions from "./QuickActions";

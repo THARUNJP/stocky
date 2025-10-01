@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Login from "./Login";
 
 

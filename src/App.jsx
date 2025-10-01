@@ -1,7 +1,7 @@
 import { useState } from "react";
-import TopBar from "./TopBar";
-import Sidebar from "./Sidebar";
-import ChatWindow from "./ChatWindow";
+import TopBar from "./components/TopBar";
+import Sidebar from "./components/Sidebar";
+import ChatWindow from "./components/ChatWindow";
 
 /**
  * The main App component, which displays a login form if the user is not logged in,

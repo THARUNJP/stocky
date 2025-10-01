@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+
+
 /**
  * A sidebar component that displays a list of features and today's insights.
  * The sidebar is animated to slide in and out of view.

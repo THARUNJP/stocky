@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { motion } from "framer-motion";
+
 
 const messageVariants = {
   hidden: { opacity: 0, scale: 0.8 },

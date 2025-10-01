@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 /**
  * A component that displays a grid of quick action buttons.
  *
