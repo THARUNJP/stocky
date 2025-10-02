@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Input, Button, Label } from "../../lib/common"
 import { useNavigate } from "react-router-dom"
+import { loginService } from "@/service/auth.service"
+import { toast } from "react-toastify"
 
 export default function LoginPage() {
     const navigate = useNavigate()
@@ -14,7 +16,7 @@ export default function LoginPage() {
     email: false,
     password: false,
   })
-
+const [loading,setLoading] = useState(false)
   // Validation logic
   const validations = {
     email: {
@@ -29,13 +31,19 @@ export default function LoginPage() {
   const isPasswordValid = validations.password.minLength
   const isFormValid = validations.email.isValid && isPasswordValid
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (isFormValid) {
-      console.log("Login submitted:", formData)
-      // handle login logic here
-    }
+ const handleSubmit = async (e) => {
+  e.preventDefault()
+  if (!isFormValid) return
+
+  setLoading(true)
+  try {
+    await loginService(formData.email, formData.password, navigate)
+  } catch (err) {
+    console.error(err)
+  } finally {
+    setLoading(false)
   }
+}
 
   const handleBlur = (field) => {
     setTouched({ ...touched, [field]: true })
@@ -96,9 +104,9 @@ export default function LoginPage() {
             )}
           </div>
 
-          <Button type="submit" disabled={!isFormValid}>
-            Login
-          </Button>
+         <Button type="submit" disabled={!isFormValid || loading}>
+  {loading ? "Logging in..." : "Login"}
+</Button>
         </form>
 
         <p className="mt-4 text-center text-sm text-gray-600">

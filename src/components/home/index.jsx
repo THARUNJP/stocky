@@ -14,7 +14,7 @@ export default function ChatInterface() {
 
 async function authValidate() {
   try {
-    const token = getToken();
+    const token = getToken;
     if (!token) return;
 
     const response = await validateAccessToken(token);
