@@ -1,7 +1,7 @@
 // apiClient.js
 
 import axios from "axios";
-import { RefreshAccessToken } from "../service/refreshTokens/acessToken";
+// import { RefreshAccessToken } from "../service/refreshTokens/acessToken";
 
 const apiRequest = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -38,7 +38,7 @@ apiRequest.interceptors.response.use(
       !originalRequest._retryAccessToken
     ) {
       originalRequest._retryAccessToken = true;
-      const response = await RefreshAccessToken();
+      // const response = await RefreshAccessToken();
 
       if (!response) {
         // Redirect user to login page
@@ -55,4 +55,4 @@ apiRequest.interceptors.response.use(
 );
 
 
-export { apiRequest };
+export default apiRequest

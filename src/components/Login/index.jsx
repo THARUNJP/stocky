@@ -9,7 +9,6 @@ export default function LoginPage() {
     password: "",
   })
 
-
   const [showPassword, setShowPassword] = useState(false)
   const [touched, setTouched] = useState({
     email: false,
@@ -43,8 +42,8 @@ export default function LoginPage() {
   }
 
   return (
-     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 px-4">
-     <div className="w-full max-w-md p-6 bg-gradient-to-br from-white/90 via-purple-50/80 to-indigo-50/80 rounded-lg shadow-lg backdrop-blur-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold text-center mb-6">Login to Your Account</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
