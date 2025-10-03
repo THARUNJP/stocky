@@ -18,7 +18,7 @@ async function authValidate() {
     if (!token) return;
 
     const response = await validateAccessToken(token);
-    if (response?.status) {
+    if (response?.valid) {
       setUser(response.user || null);
     }
   } catch (err) {

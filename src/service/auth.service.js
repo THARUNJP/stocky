@@ -10,7 +10,8 @@ export const validateAccessToken = async (token) => {
     const response = await apiRequest.get("/auth/validate");
 
     // If backend returns user info, token is valid
-    return { valid: response?.data?.status, user: response?.data?.username };
+    
+    return { valid: response?.data?.status, user: response?.data?.data?.username };
   } catch (err) {
     console.error("Access token validation failed:", err?.response?.data || err);
     return { valid: false };
