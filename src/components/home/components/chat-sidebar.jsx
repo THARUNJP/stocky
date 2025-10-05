@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { PenSquare, Search, TrendingUp, BarChart3, Clock } from "lucide-react"
+import {useNavigate} from "react-router-dom"
 
 const chatHistory = [
   { id: "1", title: "AAPL Stock Analysis", time: "2h ago" },
@@ -14,7 +15,8 @@ const chatHistory = [
   { id: "7", title: "S&P 500 Performance Review", time: "5d ago" },
 ]
 
-export function ChatSidebar({ selectedChat, onSelectChat }) {
+export function ChatSidebar({ selectedChat, onSelectChat,user }) {
+  const navigate  = useNavigate()
   return (
     <div className="w-64 border-r border-sidebar-border bg-sidebar flex flex-col">
       {/* Logo & Brand */}
@@ -28,7 +30,7 @@ export function ChatSidebar({ selectedChat, onSelectChat }) {
       </div>
 
       {/* New Chat Button */}
-      <div className="p-3">
+      <div className="p-3" onClick={()=>navigate("/")}>
         <Button
           className="w-full justify-start gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm h-10 rounded-lg"
           size="sm"
@@ -84,11 +86,11 @@ export function ChatSidebar({ selectedChat, onSelectChat }) {
       <div className="p-3 border-t border-sidebar-border">
         <div className="flex items-center gap-3 px-2 py-2">
           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-            <span className="text-sm font-semibold text-primary">JD</span>
+            {user && <span className="text-sm font-semibold text-primary">{user.slice(0,1).toUpperCase()}</span>}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-sidebar-foreground truncate">John Doe</p>
-            <p className="text-xs text-muted-foreground truncate">Premium Plan</p>
+            <p className="text-sm font-medium text-sidebar-foreground truncate">{user}</p>
+            <p className="text-xs text-muted-foreground truncate">Free plan</p>
           </div>
         </div>
       </div>

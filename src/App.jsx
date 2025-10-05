@@ -4,9 +4,14 @@ import LoginPage from './components/Login/index';
 import Home from "./components/home/index"
 
 const App = () => (
-  <Router>
+ <Router basename="/chat/">
     <Routes>
-      <Route path='/' element={<Home />} />
+      {/* /chat → first-time chat */}
+      <Route index element={<Home />} />
+
+      {/* /chat/:sessionId → existing session */}
+      <Route path=":sessionId" element={<Home />} />
+
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>

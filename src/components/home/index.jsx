@@ -13,6 +13,8 @@ export default function ChatInterface() {
   }, []);
 
 async function authValidate() {
+  console.log("auth calls");
+  
   try {
     const token = getToken;
     if (!token) return;
@@ -28,7 +30,7 @@ async function authValidate() {
 
   return (
     <div className="flex h-screen bg-background">
-      <ChatSidebar selectedChat={selectedChat} onSelectChat={setSelectedChat} />
+      <ChatSidebar selectedChat={selectedChat} onSelectChat={setSelectedChat} user={user} />
       <ChatMain user={user} />
     </div>
   );
