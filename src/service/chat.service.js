@@ -5,9 +5,10 @@ export const sendUserQuery = async (query, sessionId) => {
   const data = {
     user_message: query,
   };
+   const url = `/chat${sessionId ? `?session_id=${sessionId}` : ""}`;
 
   try {
-    const response = await apiRequest.post(`/chat?session_id=${sessionId}`, data);
+    const response = await apiRequest.post(url, data);
     console.log(response?.data?.data, "??");
 
     return response?.data?.data;
